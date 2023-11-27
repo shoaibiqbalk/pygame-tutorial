@@ -21,6 +21,14 @@ clock = pygame.time.Clock()
 sky_surface = pygame.image.load('graphics/Sky.png') # variable name specify what object we are adding
 ground_surface = pygame.image.load('graphics/ground.png')
 
+# adding text
+# 1. create a font
+score_font = pygame.font.Font(None, 50)
+# 2. write text on a surface 
+score_text = score_font.render('Score', True, 'Black')
+# 3. blid the text surface
+
+
 
 while True:
     for event in pygame.event.get():
@@ -30,6 +38,7 @@ while True:
             
     screen.blit(sky_surface, (0,0)) # block image transfer
     screen.blit(ground_surface, (0,300))
+    screen.blit(score_text, (10, 10))
 
     pygame.display.update()
     clock.tick(60) # maximum 60 fps
