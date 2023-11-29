@@ -23,12 +23,15 @@ ground_surface = pygame.image.load('graphics/ground.png')
 
 # adding text
 # 1. create a font
-score_font = pygame.font.Font(None, 50)
+score_font = pygame.font.Font('font/Pixeltype.ttf', 50)
 # 2. write text on a surface 
 score_text = score_font.render('Score', True, 'Black')
 # 3. blid the text surface
 
 
+snail_surface = pygame.image.load('graphics/snail/snail1.png')
+snail_x_position = 700
+movement = 2
 
 while True:
     for event in pygame.event.get():
@@ -39,7 +42,16 @@ while True:
     screen.blit(sky_surface, (0,0)) # block image transfer
     screen.blit(ground_surface, (0,300))
     screen.blit(score_text, (10, 10))
-
+    snail_x_position = snail_x_position - movement
+    if snail_x_position < 10:
+        movement = -2
+    elif snail_x_position > 700:
+        movement = 2
+    else:
+        pass
+    
+    screen.blit(snail_surface, (snail_x_position, 265))
+    
     pygame.display.update()
     clock.tick(60) # maximum 60 fps
  
